@@ -23,6 +23,14 @@ async function stadaRoute(req, res) {
   });
 }
 
+async function thingRoute(req, res) {
+  return res.render('thing', {
+    title: 'Auka hlutur',
+    time: new Date().toISOString(),
+  });
+}
+
 indexRouter.get('/', indexRoute);
 indexRouter.get('/leikir', leikirRoute);
 indexRouter.get('/stada', stadaRoute);
+indexRouter.get('/thing', thingRoute);
