@@ -26,10 +26,19 @@ const records = [
     password: '$2a$11$pgj3.zySyFOvIQEpD7W6Aund1Tw.BFarXxgLJxLbrzIv/4Nteisii',
     admin: false,
   },
+  {
+    id: 3,
+    username: 'gunj',
+    name: 'Gunj',
+
+    // 123
+    password: '$2a$11$pgj3.zySyFOvIQEpD7W6Aund1Tw.BFarXxgLJxLbrzIv/4Nteisii',
+    admin: false,
+  },
 ];
 
 export async function comparePasswords(password, user) {
-  const ok = await bcrypt.compare(password, user.password);
+const ok = await bcrypt.compare(password, user.password);
 
   if (ok) {
     return user;

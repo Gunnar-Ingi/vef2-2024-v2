@@ -6,4 +6,8 @@
   <button>Innskrá</button>
 </form>
 
+<% if (locals.failureMessage) { %>
+  <p>sign in failure</p>
+<% } %>
+
 <%- include('footer') -%>

@@ -1,7 +1,5 @@
-/*
-insert into teams values(bla bla bla)
 
-insert into games values(bla bla bla)
+INSERT INTO teams (name) VALUES ('liðheimablah');
 
-find a way to read the json files......
-*/
+
+INSERT INTO games (date, home, away, home_score, away_score) VALUES (14/02/2024, 'liðheimablah', 'liðawayblah', 3, 4);

@@ -14,6 +14,11 @@ import { comparePasswords, findById, findByUsername } from './lib/users.js';
 
 const env = environment(process.env, logger);
 
+if (!env?.connectionString || !env.sessionSecret) {
+ console.error('gagnagrunnur ekki tengdur');
+ process.exit(1);
+}
+
 if (!env) {
   process.exit(1);
 }

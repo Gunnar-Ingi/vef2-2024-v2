@@ -1,9 +1,36 @@
-import { query } from './lib/db.js';
+import { readFile } from 'fs/promises';
+import { createSchema, dropSchema, end, query } from './lib/db.js';
 
 async function main() {
-  const games = await query('select * from games');
+  const drop = await dropSchema();
 
-  console.log(games);
+  if (drop) {
+    console.info('schema dropped');
+  } else {
+    console.info('schema not dropped, exiting');
+    process.exit(-1);
+  }
+
+  const result = await createSchema();
+
+  if (result) {
+    console.info('schema created');
+  } else {
+    console.info('schema not created');
+  }
+
+  const data = await readFile('./sql/insert.sql');
+  const insert = await query(data.toString('utf-8'));
+
+  if (insert) {
+    console.info('data inserted');
+  } else {
+    console.info('data not inserted');
+  }
+
+  console.log(data);
+
+  await end();
 }
 
 main().catch((e) => console.error(e));
